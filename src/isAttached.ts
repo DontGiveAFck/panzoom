@@ -10,6 +10,7 @@ export default function isAttached(elem: HTMLElement | SVGElement | Document) {
     parent &&
     doc.nodeType === 9 &&
     parent.nodeType === 1 &&
-    doc.documentElement.contains(parent)
+    // @ts-ignore
+    (doc.documentElement.contains(parent) || doc.documentElement.contains(parent.getRootNode().host))
   )
 }
